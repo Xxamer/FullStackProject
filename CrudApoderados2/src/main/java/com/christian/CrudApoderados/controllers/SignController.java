@@ -19,17 +19,17 @@ public class SignController {
 	@Autowired
 	ISignService SignService;
 
-	@GetMapping("/Signs")
+	@GetMapping("/Signs/AllSigns")
 	public List<Sign> getAllSign() {
 		return SignService.getAll();
 	}
 
-	@GetMapping("/Signs/{Id_Firma}")
+	@GetMapping("/Signs/getSigns/{Id_Firma}")
 	public Sign getOne(@PathVariable(value = "Id_Firma") long Id_Firma) {
 		return SignService.get(Id_Firma);
 	}
 
-	@PostMapping("/addSign")
+	@PostMapping("Signs/addSign")
 	public void add(Sign sign) {
 		SignService.post(sign);
 	}

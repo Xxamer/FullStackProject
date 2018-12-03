@@ -20,25 +20,25 @@ public class OfficesControllers {
 	@Autowired
 	IOfficesService OfficesService;
 
-	@GetMapping("/Offices")
+	@GetMapping("/Offices/allOffices")
 	public List<Offices> getAllOffices() {
 		return OfficesService.getAll();
 	}
 
-	@GetMapping("/Clients/{id_Oficinas}")
+	@GetMapping("/Offices/{id_Oficinas}")
 	public Offices getOne(@PathVariable(value="Id_Oficinas") long Id_Oficinas) {
 	return OfficesService.get(Id_Oficinas);
 }
 
-	@PostMapping("/addOfice")
+	@PostMapping("/Offices/addOffice")
 	public void add(Offices offices) {
 		OfficesService.post(offices);
 	}
-	@PutMapping("/UpdateOffice/{id_Oficinas}")
+	@PutMapping("/Offices/UpdateOffice/{id_Oficinas}")
 	public void update(Offices offices,@PathVariable(value="Id_Oficinas") long id_Oficinas) {
 		OfficesService.put(offices, id_Oficinas);
 	}
-	@DeleteMapping("/DeleteOffice/{Id_Oficinas}")
+	@DeleteMapping("/Offices/DeleteOffice/{Id_Oficinas}")
 	public void update(@PathVariable(value ="Id_Oficina") long Id_Oficinas) {
 		OfficesService.delete(Id_Oficinas);
 	}

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.christian.CrudApoderados.entity.models.Banks;
 import com.christian.CrudApoderados.entity.services.IBanksService;
 
-@CrossOrigin (origins = "*")
+@CrossOrigin(origins = {"*"})
 @RestController
 public class BanksController {
 	@Autowired

@@ -1,11 +1,16 @@
 package com.christian.CrudApoderados.entity.models;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -24,8 +29,14 @@ public class Sign implements Serializable {
 	private int Id_Apoderado;
 	@NotNull
 	private int Id_Oficinas;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_Oficinas")
+	private List<Offices> offices;
 	@NotNull
 	private int Num_Escritura;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Num_Escritura")
+	private List<Apoderados> apoderados;
 	@NotEmpty
 	private String Fecha;
 	@NotNull
