@@ -20,24 +20,24 @@ public class ClientsController {
 	@Autowired
 	IClientsService ClientsService;
 
-	@GetMapping("/Clients/AllClients")
+	@GetMapping("/clients/AllClients")
 	public List<Clients> getAllClients() {
 		return ClientsService.getAll();
 	}
 
-	@GetMapping("/Clients/FindClients/{id_Cliente}")
+	@GetMapping("/clients/FindClients/{id_Cliente}")
 	public Clients getOne(@PathVariable(value = "id_Cliente") long Id_Cliente) {
 		return ClientsService.get(Id_Cliente);
 	}
-	@PostMapping("/Clients/addClient")
+	@PostMapping("/clients/addClient")
 	public void add(Clients clients) {
 		ClientsService.post(clients);
 	}
-	@PutMapping("/Clients/UpdateClients/{id_Cliente}")
+	@PutMapping("/clients/UpdateClients/{id_Cliente}")
 	public void update(Clients clients,@PathVariable(value="id_Cliente") long Id_Cliente) {
 		ClientsService.put(clients, Id_Cliente);
 	}
-	@DeleteMapping("/Clients/DeleteClient/{id_Cliente}")
+	@DeleteMapping("/clients/DeleteClient/{id_Cliente}")
 	public void update(@PathVariable(value = "id_Cliente") long Id_Cliente) {
 	ClientsService.delete(Id_Cliente);
 }

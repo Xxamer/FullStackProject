@@ -1,12 +1,20 @@
 package com.christian.CrudApoderados.entity.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -14,14 +22,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin(origins = {"localhost:8100","*"})
 @Entity
-@Table(name ="apoderados")
+@Table(name ="apoderados", uniqueConstraints = {@UniqueConstraint(columnNames = { "Num_Apoderado", "Num_Apoderado"})})
 public class Apoderados implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id_Apoderado;
-	@NotNull
-	private int Id_Banco;
+	@ManyToOne
+	@JoinColumn(name="Id_Banco")
+	private Banks Id_Banco;
 	@NotNull
 	private int Num_Apoderado;
 	@NotEmpty
@@ -30,7 +39,12 @@ public class Apoderados implements Serializable {
 	private String Apellido1;
 	@NotEmpty
 	private String Apellido2;
-	public Apoderados(long id_Apoderado, @NotNull int id_Banco, @NotNull int num_Apoderado, @NotEmpty String nombre,
+	@OneToMany(mappedBy="Id_Apoderado")
+	private List<Sign> SignListApoderado = new ArrayList<Sign>();
+	
+	public Apoderados() {
+	}
+	public Apoderados(long id_Apoderado, Banks id_Banco, @NotNull int num_Apoderado, @NotEmpty String nombre,
 			@NotEmpty String apellido1, @NotEmpty String apellido2) {
 		Id_Apoderado = id_Apoderado;
 		Id_Banco = id_Banco;
@@ -39,19 +53,16 @@ public class Apoderados implements Serializable {
 		Apellido1 = apellido1;
 		Apellido2 = apellido2;
 	}
-	public Apoderados() {
-		super();
-	}
 	public long getId_Apoderado() {
 		return Id_Apoderado;
 	}
 	public void setId_Apoderado(long id_Apoderado) {
 		Id_Apoderado = id_Apoderado;
 	}
-	public int getId_Banco() {
+	public Banks getId_Banco() {
 		return Id_Banco;
 	}
-	public void setId_Banco(int id_Banco) {
+	public void setId_Banco(Banks id_Banco) {
 		Id_Banco = id_Banco;
 	}
 	public int getNum_Apoderado() {
@@ -78,6 +89,7 @@ public class Apoderados implements Serializable {
 	public void setApellido2(String apellido2) {
 		Apellido2 = apellido2;
 	}
+	
 	
 	
 	

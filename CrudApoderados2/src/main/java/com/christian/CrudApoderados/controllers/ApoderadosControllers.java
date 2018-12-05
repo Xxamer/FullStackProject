@@ -19,25 +19,25 @@ import com.christian.CrudApoderados.entity.services.IApoderadosService;
 public class ApoderadosControllers {
 @Autowired
 IApoderadosService ApoderadosService;
-@GetMapping("/Apoderados/AllApoderados")
+@GetMapping("/apoderados/AllApoderados")
 public List<Apoderados> getAllApoderados(){
 	return ApoderadosService.getAll();
 	
 }
 
-@GetMapping("/Apoderados//FindApoderados/{Id_apoderados}")
+@GetMapping("/apoderados/FindApoderados/{Id_apoderados}")
 public Apoderados getOne(@PathVariable(value ="Id_apoderados") long Id_Apoderados) {
 return ApoderadosService.get(Id_Apoderados);
 }
-@PostMapping("/Apoderados/AddApoderado")
+@PostMapping("/apoderados/AddApoderado")
 public void add(Apoderados apoderados) {
 	ApoderadosService.post(apoderados);
 }
-@PutMapping("/Apoderados/UpdateApoderados/{Id_Apoderados}")
+@PutMapping("/apoderados/UpdateApoderados/{Id_Apoderados}")
 public void update(Apoderados apoderados,@PathVariable(value="Id_Apoderados") long Id_Apoderados) {
 	ApoderadosService.put(apoderados, Id_Apoderados);
 }
-@DeleteMapping("/Apoderados/deleteApoderados/{Id_Apoderados}")
+@DeleteMapping("/apoderados/deleteApoderados/{Id_Apoderados}")
 public void update(@PathVariable(value = "Id_Apoderados") long Id_Apoderados) {
 	ApoderadosService.delete(Id_Apoderados);
 }
