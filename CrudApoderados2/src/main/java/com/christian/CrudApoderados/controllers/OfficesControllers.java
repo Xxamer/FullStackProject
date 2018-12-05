@@ -25,7 +25,11 @@ public class OfficesControllers {
 		return OfficesService.getAll();
 	}
 
+<<<<<<< HEAD
 	@GetMapping("/Offices/findOffice/{id_Oficinas}")
+=======
+	@GetMapping("/Offices/{id_Oficinas}")
+>>>>>>> developed
 	public Offices getOne(@PathVariable(value="Id_Oficinas") long Id_Oficinas) {
 	return OfficesService.get(Id_Oficinas);
 }
@@ -39,7 +43,11 @@ public class OfficesControllers {
 		OfficesService.put(offices, id_Oficinas);
 	}
 	@DeleteMapping("/Offices/DeleteOffice/{Id_Oficinas}")
+<<<<<<< HEAD
 	public void update(@PathVariable(value ="Id_Oficinas") long Id_Oficinas) {
+=======
+	public void update(@PathVariable(value ="Id_Oficina") long Id_Oficinas) {
+>>>>>>> developed
 		OfficesService.delete(Id_Oficinas);
 	}
 }

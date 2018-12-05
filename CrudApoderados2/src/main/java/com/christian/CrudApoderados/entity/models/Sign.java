@@ -10,7 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+<<<<<<< HEAD
 import javax.persistence.ManyToOne;
+=======
+>>>>>>> developed
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -26,14 +29,27 @@ public class Sign implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id_Firma;
+<<<<<<< HEAD
 	@ManyToOne
 	@JoinColumn(name="Id_Oficinas")
 	private Offices Id_Oficinas;
 	@ManyToOne
 	@JoinColumn(name="Id_Apoderado")
 	private Apoderados Id_Apoderado;
+=======
+	@NotNull
+	private int Id_Apoderado;
+	@NotNull
+	private int Id_Oficinas;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_Oficinas")
+	private List<Offices> offices;
+>>>>>>> developed
 	@NotNull
 	private int Num_Escritura;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Num_Escritura")
+	private List<Apoderados> apoderados;
 	@NotEmpty
 	private String Fecha;
 	@NotNull

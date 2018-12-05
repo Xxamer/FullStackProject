@@ -1,7 +1,10 @@
 package com.christian.CrudApoderados.entity.models;
 
 import java.io.Serializable;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> developed
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin(origins = {"*","*"})
 @Entity
-@Table(name ="banco")
+@Table(name ="banco", uniqueConstraints = {@UniqueConstraint(columnNames = { "Id_Banco", "Id_Banco"})})
 
 public class Banks implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +40,8 @@ public class Banks implements Serializable {
 	private List<Offices> officesList = new ArrayList<Offices>();
 	@OneToMany(mappedBy="Id_Banco")
 	private List<Apoderados> ApoderadosList = new ArrayList<Apoderados>();
+	
+	
 	
 	
 	
