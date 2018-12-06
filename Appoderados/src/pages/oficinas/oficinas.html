@@ -1,0 +1,40 @@
+<!--
+  Generated template for the OficinasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Oficinas</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="openModal()" color="primary">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+      <ion-item-sliding *ngFor="let office of offices"> 
+  <ion-item  text-wrap (press)="Popup(office)">
+      <p>{{office.nombre}}</p>
+    <p>{{office.id_Banco.nombre}}</p>
+    <p>{{office.horario}}</p>
+  </ion-item>
+  <ion-item-options>
+      <button ion-button color="secondary" (click)="openModal({id: office.id_Oficina})">
+        <ion-icon name="brush"></ion-icon> Edit
+      </button>
+  </ion-item-options>
+</ion-item-sliding>
+</ion-list>
+</ion-content>
+
