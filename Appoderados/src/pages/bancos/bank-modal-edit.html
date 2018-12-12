@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Editar Cliente
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios,core">Cancel</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <form #bankForm="ngForm" (ngSubmit)="edit(bankForm.value)">
+        <input type="hidden" name="href" [(ngModel)]="bank.href">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item>
+                        <ion-input placeholder="Nombre del banco" name="nombre" type="text" required [(ngModel)]="bank.nombre"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Sede del banco" name="sede" type="text" required [(ngModel)]="bank.sede"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="País del banco" name="pais" type="text" required [(ngModel)]="bank.pais"
+                            #name></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                <button ion-button color="primary" full type="submit" [disabled]="!bankForm.form.valid">Save</button>
+            </ion-col>
+            
+        </ion-row>
+    </form>

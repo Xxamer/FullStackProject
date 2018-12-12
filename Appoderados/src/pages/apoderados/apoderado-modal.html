@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Crear apoderado
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios,core">Cancel</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <form #apoderadoForm="ngForm" (ngSubmit)="save(apoderadoForm.value)">
+        <input type="hidden" name="href" [(ngModel)]="apoderado.href">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item>
+                        <ion-input placeholder="Nombre del apoderado" name="nombre" type="text" required [(ngModel)]="apoderado.nombre"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Primer apellido del apoderado" name="apellido1" type="text" required [(ngModel)]="apoderado.apellido1"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Segundo apellido del apoderado" name="apellido2" type="text" required [(ngModel)]="apoderado.apellido2"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Número del apoderado" name="num_Apoderado" type="number" required [(ngModel)]="apoderado.num_Apoderado"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Banco</ion-label>
+                        <ion-select #name name="id_Banco" required [(ngModel)]="apoderado.id_Banco">
+                            <ion-option *ngFor="let bank of banks" [value]="bank.id_Banco">{{bank.nombre}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div *ngIf="error" class="alert alert-danger">Ha ocurrido un error</div>
+                <button ion-button color="primary" full type="submit" [disabled]="!apoderadoForm.form.valid">Save</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
