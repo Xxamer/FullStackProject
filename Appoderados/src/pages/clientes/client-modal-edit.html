@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Editar Cliente
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios,core">Cancel</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <form #clientForm="ngForm" (ngSubmit)="edit(clientForm.value)">
+        <input type="hidden" name="href" [(ngModel)]="client.href">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item>
+                        <ion-input maxlength="100" placeholder="Nombre del cliente" name="nombre" type="text" required
+                            [(ngModel)]="client.nombre" #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input maxlength="50" placeholder="Primer apellido" name="apellido1" type="text" required
+                            [(ngModel)]="client.apellido1" #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input maxlength="50" placeholder="Segundo apellido" name="apellido2" type="text" required
+                            [(ngModel)]="client.apellido2" #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input minlength="9" maxlength="9" placeholder="DNI del cliente" name="nif" type="text"
+                            required [(ngModel)]="client.nif" #name></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                <button ion-button color="primary" full type="submit" [disabled]="!clientForm.form.valid">Save</button>
+            </ion-col>
+
+        </ion-row>
+    </form>
+</ion-content>

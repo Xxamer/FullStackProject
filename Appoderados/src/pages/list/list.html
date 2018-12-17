@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Firmas</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="openModal()" color="primary">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+       
+        <ion-item *ngFor="let sign of signs" text-wrap (press)="Popup(sign)">
+            <strong>
+                <p>La firma con número:</p>
+              </strong>
+              <p>{{sign.num_Escritura}}</p>
+          <strong>
+            <p>Fue firmada en la oficina:</p>
+          </strong>
+          <p>{{sign.id_Oficinas.nombre}}</p>
+          <strong>
+            <p>Con dirección:</p>
+          </strong>
+          <p>{{sign.id_Oficinas.direccion}}</p>
+          <strong>
+            <p>Por el apoderado:</p>
+          </strong>
+          <p>{{sign.id_Apoderado.nombre}} {{sign.id_Apoderado.apellido1}} {{sign.id_Apoderado.apellido2}}</p>
+          <strong>
+            <p>Con fecha:</p>
+          </strong>
+          <p>{{sign.fecha}}</p> 
+          <strong>
+            <p>Con un precio de :</p>
+          </strong>
+          <p>{{sign.precio_Vivienda}}</p> 
+          <strong>
+            <p>Incluyendo trastero:</p>
+          </strong>
+          <p>{{sign.trastero}}</p> 
+          <strong>
+            <p>Incluyendo garaje:</p>
+          </strong>
+          <p>{{sign.garaje}}</p> 
+          
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="secondary" (click)="openEdit({id: sign.id_Firma})">
+            <ion-icon name="brush"></ion-icon> Edit
+          </button>
+        </ion-item-options>
+    </ion-list>
+  </ion-content>

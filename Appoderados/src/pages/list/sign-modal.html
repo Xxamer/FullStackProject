@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Crear Firma
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios,core">Cancel</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+              
+    <form #signForm="ngForm" (ngSubmit)="save(signForm.value)">
+        <input type="hidden" name="href" [(ngModel)]="sign.href">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item>
+                        <ion-label>Apoderado firmante</ion-label>
+                        <ion-select #name name="Id_Apoderado" [(ngModel)]="sign.Id_Apoderado">
+                            <ion-option *ngFor="let apoderado of apoderados" [value]="apoderado.id_Apoderado">{{apoderado.nombre}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Oficina en la que se firmó</ion-label>
+                        <ion-select #name name="Id_Oficinas" [(ngModel)]="sign.Id_Oficinas">
+                            <ion-option *ngFor="let office of offices" [value]="office.id_Oficinas">{{office.nombre}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Identificador de la escritura" name="num_Escritura" type="number"
+                            required [(ngModel)]="sign.num_Escritura" #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Fecha de firma" name="fecha" type="date" required [(ngModel)]="sign.fecha"
+                            #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Precio de la vivienda" name="precio_Vivienda" type="double" required
+                            [(ngModel)]="sign.precio_Vivienda" #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Numero de caras del documento" name="num_Caras" type="number" required
+                            [(ngModel)]="sign.num_Caras" #name></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Garaje</ion-label>
+                        <ion-select #name name="garaje" [(ngModel)]="sign.Garaje">
+                            <ion-option [value]="Si">Si</ion-option>
+                            <ion-option [value]="No">No</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Trastero</ion-label>
+                        <ion-select #name name="trastero" [(ngModel)]="sign.Trastero">
+                            <ion-option [value]="Si">Si</ion-option>
+                            <ion-option [value]="No">No</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input placeholder="Numero de Personas que firman" name="num_Persona" type="number" required
+                            [(ngModel)]="sign.num_Persona" #name></ion-input>
+                    </ion-item>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div *ngIf="error" class="alert alert-danger">Ha ocurrido un error</div>
+                <button ion-button color="primary" full type="submit" [disabled]="!signForm.form.valid">Save</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
