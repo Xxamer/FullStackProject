@@ -27,7 +27,7 @@
     "@ionic/storage": "2.2.0",
     "@types/bcrypt": "^3.0.0",
     "@types/node": "^10.12.12",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "cordova-android": "7.1.4",
     "cordova-plugin-device": "^2.0.2",
